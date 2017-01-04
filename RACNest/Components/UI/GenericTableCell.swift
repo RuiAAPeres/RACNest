@@ -12,10 +12,10 @@ extension GenericTableCell: Reusable {}
 
 final class GenericTableCell: UITableViewCell {
     
-    private let cellDescriptionLabel = UILabel(frame: CGRectZero)
+    private let cellDescriptionLabel = UILabel(frame: CGRect.zero)
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .Default, reuseIdentifier: reuseIdentifier)
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
 
         contentView.addSubview(cellDescriptionLabel)
     }
@@ -24,16 +24,16 @@ final class GenericTableCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(presentable: TextPresentable) {
+    func configure(_ presentable: TextPresentable) {
         
         cellDescriptionLabel.attributedText = presentable.text
-        accessoryType = .DisclosureIndicator
+        accessoryType = .disclosureIndicator
     }
     
     override func layoutSubviews() {
         let verticalPadding = 5
         let leftPadding = 16
         
-        cellDescriptionLabel.frame = CGRect(x: leftPadding, y: verticalPadding, width: Int(CGRectGetWidth(contentView.frame)) - leftPadding, height: Int(CGRectGetHeight(contentView.frame)) - (verticalPadding * 2))
+        cellDescriptionLabel.frame = CGRect(x: leftPadding, y: verticalPadding, width: Int(contentView.frame.width) - leftPadding, height: Int(contentView.frame.height) - (verticalPadding * 2))
     }
 }

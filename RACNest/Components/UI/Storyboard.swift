@@ -16,7 +16,7 @@ extension UIStoryboard {
         return UIStoryboard(name: "Main", bundle: nil)
     }
     
-    func instantiateViewControllerWithIdentifier<S : StoryboardViewControllerType where S.RawValue == String>(identifier: S) -> UIViewController {
-        return instantiateViewControllerWithIdentifier(identifier.rawValue)
+    func instantiateViewController<S : StoryboardViewControllerType>(withIdentifier identifier: S) -> UIViewController where S.RawValue == String {
+        return instantiateViewController(withIdentifier: identifier.rawValue)
     }
 }
