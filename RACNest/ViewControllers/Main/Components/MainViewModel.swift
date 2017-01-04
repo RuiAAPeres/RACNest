@@ -14,8 +14,8 @@ final class MainViewModel: NSObject {
     
     override init() {
         
-        let item1 = MainCellItem(title: "1. Form 🐥", identifier: .Form)
-        let item2 = MainCellItem(title: "2. Search 🔍", identifier: .Search)
+        let item1 = MainCellItem(title: "1. Form 🐥", identifier: .form)
+        let item2 = MainCellItem(title: "2. Search 🔍", identifier: .search)
 
         items = [item1, item2]
 
@@ -25,7 +25,7 @@ final class MainViewModel: NSObject {
 
 extension MainViewModel: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 
         let cell: GenericTableCell = tableView.dequeueReusableCell(indexPath: indexPath)
 
@@ -34,7 +34,7 @@ extension MainViewModel: UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
 }

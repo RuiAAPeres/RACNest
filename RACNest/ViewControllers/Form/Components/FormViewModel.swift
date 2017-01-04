@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveSwift
 import ReactiveCocoa
 import Result
 
@@ -17,25 +18,27 @@ struct FormViewModel {
     let username: MutableProperty<String>
     let password: MutableProperty<String>
     
-    init(credentialsValidationRule: (String, String) -> Bool = validateCredentials) {
+    init(credentialsValidationRule: @escaping (String, String) -> Bool = validateCredentials) {
         
-        let username = NSUserDefaults.value(forKey: .Username)
-        let password = NSUserDefaults.value(forKey: .Password)
+        let username = Foundation.UserDefaults.value(forKey: .username)
+        let password = Foundation.UserDefaults.value(forKey: .password)
         
         let usernameProperty = MutableProperty(username)
         let passwordProperty = MutableProperty(password)
 
         let isFormValid = MutableProperty(credentialsValidationRule(username, password))
-        isFormValid <~ combineLatest(usernameProperty.producer, passwordProperty.producer).map(credentialsValidationRule)
+        isFormValid <~ SignalProducer
+            .combineLatest(usernameProperty.producer, passwordProperty.producer)
+            .map(credentialsValidationRule)
 
         let authenticateAction = Action<Void, Void, NoError>(enabledIf: isFormValid, { _ in
             return SignalProducer { o, d in
 
-                let username = usernameProperty.value ?? ""
-                let password = passwordProperty.value ?? ""
+                let username = usernameProperty.value
+                let password = passwordProperty.value
 
-                NSUserDefaults.setValue(username, forKey: .Username)
-                NSUserDefaults.setValue(password, forKey: .Password)
+                Foundation.UserDefaults.setValue(username, forKey: .username)
+                Foundation.UserDefaults.setValue(password, forKey: .password)
 
                 o.sendCompleted()
             }
@@ -48,15 +51,7 @@ struct FormViewModel {
 
 }
 
-extension FormViewModel {
-
-    var authenticate: CocoaAction {
-        return CocoaAction(authenticateAction, input: ())
-    }
-
-}
-
-private func validateCredentials(username: String, password: String) -> Bool {
+private func validateCredentials(_ username: String, password: String) -> Bool {
     
     let usernameRule = username.characters.count > 5
     let passwordRule = password.characters.count > 10

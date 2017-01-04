@@ -17,7 +17,7 @@ struct MainCellItem {
 extension MainCellItem: TextPresentable {
     
     var text: NSAttributedString {
-        return NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName:UIColor.darkGrayColor()])
+        return NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
     }
 }
 
