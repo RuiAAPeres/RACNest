@@ -121,7 +121,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oii-tE-Mvs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2308" y="1272"/>
+            <point key="canvasLocation" x="2404" y="1240"/>
+        </scene>
+        <!--Composition View Controller-->
+        <scene sceneID="NeH-5h-dnD">
+            <objects>
+                <viewController storyboardIdentifier="CompositionViewController" id="YL2-kZ-nT6" customClass="CompositionViewController" customModule="RACNest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jrk-Vj-uu8"/>
+                        <viewControllerLayoutGuide type="bottom" id="wnE-8v-S9m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jWg-5Q-wfh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yo2-Vq-VkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2408" y="1978"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I5L-7e-bbr">

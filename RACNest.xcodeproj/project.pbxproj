@@ -17,6 +17,7 @@
 		C72D330F1C471B3000F88B11 /* TableViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D330E1C471B3000F88B11 /* TableViewProtocols.swift */; };
 		C76C205B1C504B9D0083F4F5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76C205A1C504B9D0083F4F5 /* SearchViewController.swift */; };
 		C76C20601C5053660083F4F5 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = C76C205F1C5053660083F4F5 /* words.txt */; };
+		C7738EA01C5987F200246AAE /* CompositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7738E9F1C5987F200246AAE /* CompositionViewController.swift */; };
 		C7852C331C4ACAAA00375089 /* StoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7852C321C4ACAAA00375089 /* StoryboardViewController.swift */; };
 		C7852C351C4ACB6B00375089 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7852C341C4ACB6B00375089 /* Storyboard.swift */; };
 		C7852C3D1C4ACF9500375089 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7852C3C1C4ACF9500375089 /* FormViewController.swift */; };
@@ -57,6 +58,7 @@
 		C72D330E1C471B3000F88B11 /* TableViewProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewProtocols.swift; sourceTree = "<group>"; };
 		C76C205A1C504B9D0083F4F5 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C76C205F1C5053660083F4F5 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
+		C7738E9F1C5987F200246AAE /* CompositionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositionViewController.swift; sourceTree = "<group>"; };
 		C7852C321C4ACAAA00375089 /* StoryboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardViewController.swift; sourceTree = "<group>"; };
 		C7852C341C4ACB6B00375089 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		C7852C3C1C4ACF9500375089 /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		C72D32F61C470FE000F88B11 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C7738E9E1C5987EA00246AAE /* Composition */,
 				C7852C3B1C4ACF9500375089 /* Form */,
 				C76C20591C504B750083F4F5 /* Search */,
 				C7852C3E1C4ACFE000375089 /* Main */,
@@ -207,6 +210,14 @@
 				C76C205F1C5053660083F4F5 /* words.txt */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		C7738E9E1C5987EA00246AAE /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				C7738E9F1C5987F200246AAE /* CompositionViewController.swift */,
+			);
+			path = Composition;
 			sourceTree = "<group>";
 		};
 		C7852C311C4ACA9F00375089 /* AppRelated */ = {
@@ -406,6 +417,7 @@
 				C7852C441C4ACFE000375089 /* MainViewModel.swift in Sources */,
 				C72D32F81C470FE000F88B11 /* AppDelegate.swift in Sources */,
 				C7CB87171C51AC7000ED9AE6 /* SearchViewModel.swift in Sources */,
+				C7738EA01C5987F200246AAE /* CompositionViewController.swift in Sources */,
 				C7CB87161C51AC7000ED9AE6 /* SearchCellItem.swift in Sources */,
 				C7CB87121C51AB8E00ED9AE6 /* GenericTableCell.swift in Sources */,
 				C7852C461C4ACFE000375089 /* MainCellItem.swift in Sources */,

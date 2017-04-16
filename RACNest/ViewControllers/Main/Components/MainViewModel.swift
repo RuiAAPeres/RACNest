@@ -16,8 +16,9 @@ final class MainViewModel: NSObject {
         
         let item1 = MainCellItem(title: "1. Form 🐥", identifier: .Form)
         let item2 = MainCellItem(title: "2. Search 🔍", identifier: .Search)
-
-        items = [item1, item2]
+        let item3 = MainCellItem(title: "3. Composition 🚕 🚗 🚙", identifier: .Composition)
+        
+        items = [item1, item2, item3]
 
         super.init()
     }
