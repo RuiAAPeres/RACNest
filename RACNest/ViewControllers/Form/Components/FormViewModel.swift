@@ -20,7 +20,7 @@ struct FormViewModel {
         let isFormValid = MutableProperty(credentialsValidationRule(username, password))
         isFormValid <~ SignalProducer.combineLatest(usernameProperty.producer, passwordProperty.producer).map(credentialsValidationRule)
 
-        let authenticateAction = Action<Void, Void, NoError>(enabledIf: isFormValid, { _ in
+        let authenticateAction = Action<Void, Void, NoError>(enabledIf: isFormValid) { _ in
             return SignalProducer { o, d in
 
                 let username = usernameProperty.value 
@@ -31,7 +31,7 @@ struct FormViewModel {
 
                 o.sendCompleted()
             }
-        })
+        }
 
         self.username = usernameProperty
         self.password = passwordProperty
