@@ -8,8 +8,9 @@ final class MainViewModel: NSObject {
         
         let item1 = MainCellItem(title: "1. Form 🐥", identifier: .Form)
         let item2 = MainCellItem(title: "2. Search 🔍", identifier: .Search)
+        let item3 = MainCellItem(title: "3. Pincode 🔐", identifier: .Pincode)
 
-        items = [item1, item2]
+        items = [item1, item2, item3]
 
         super.init()
     }
