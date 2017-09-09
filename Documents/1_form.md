@@ -10,25 +10,25 @@ In this case, the most interesting bits are:
 Let's start with the setup at `FormViewController`'s `viewDidLoad`:
 
 ```swift
-usernameField.text = viewModel.username.value                             
-passwordField.text = viewModel.password.value                             
+usernameField.text = viewModel.username.value
+passwordField.text = viewModel.password.value
 
-viewModel.username <~ usernameField.rex_textSignal                        
-viewModel.password <~ passwordField.rex_textSignal                        
+viewModel.username <~ usernameField.reactive.continuousTextValues.filterMap { $0 }
+viewModel.password <~ passwordField.reactive.continuousTextValues.filterMap { $0 }
 
-loginButton.rex_pressed <~ SignalProducer(value: viewModel.authenticate)
+loginButton.reactive.pressed = CocoaAction(viewModel.authenticateAction)
 ```
 In the first two lines, we set the initial values for the `UITextField`. Since the `viewModel.username` and `viewMode.password` are both [`MutableProperties`](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/f77534c77434f2112ce663f998c71ab1098335b2/ReactiveCocoa/Swift/Property.swift#L88#L172), we get their current value, by accessing the `value` property.
 
 Next, we bind the on going `UITextField`'s `text` property change, to the viewModel's properties. This is done via two things:
 
-1. The `rex_textSignal`, who exposes a `SignalProducer<String, NoError>`, which is not more than a stream of values (in this case the text being changed while it's being typed). 
-2. The `<~` operator, which binds the `SignalProducer`'s last streamed value to the `MutableProperty`'s inner value. You can check the implementation [here](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/f77534c77434f2112ce663f998c71ab1098335b2/ReactiveCocoa/Swift/Property.swift#L279#L292), being the important bit [this](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/f77534c77434f2112ce663f998c71ab1098335b2/ReactiveCocoa/Swift/Property.swift#L260#L261).
+1. The `reactive.continuousTextValues`, who exposes a `Signal<String?, NoError>`, which is not more than a stream of values (in this case the text being changed while it's being typed). By using `filterMap`, we skip potential nil values and thus turn this a `Signal<String, NoError`.
+2. The `<~` operator, which binds the `Signal`'s last streamed value to the `MutableProperty`'s inner value. You can check the implementation [here](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/f77534c77434f2112ce663f998c71ab1098335b2/ReactiveCocoa/Swift/Property.swift#L279#L292), being the important bit [this](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/f77534c77434f2112ce663f998c71ab1098335b2/ReactiveCocoa/Swift/Property.swift#L260#L261).
 
 The last piece:
 
 ```swift
-loginButton.rex_pressed <~ SignalProducer(value: viewModel.authenticate)
+loginButton.reactive.pressed = CocoaAction(viewModel.authenticateAction)
 ```
 
 Binds the `viewModel.authenticate` action to the `loginButton`'s pressed. This entails two things:
@@ -48,8 +48,7 @@ self.password = MutableProperty(password)
 let isFormValid = MutableProperty(credentialsValidationRule(username, password))
 isFormValid <~ combineLatest(self.username.producer, self.password.producer).map(credentialsValidationRule)
 
-let action = authenticationAction(validCredentials)
-authenticate = CocoaAction(action, input: ())
+let authenticateAction = Action<Void, Void, NoError>(enabledIf: isFormValid) { ... }
 ```
 
 In the first two lines, we just fetch the values we already have saved in the UserDefaults (in a real project, you should save sensitive data in the Keychain). Finally in the 3rd and 4th lines, we create two `MutableProperty` with their initial values (the username and password respectively).
@@ -75,20 +74,17 @@ The final bit `validCredentials <~ ...` just binds the producer's stream of valu
 Finally the `authenticationAction` function, which seems a bit complicate, but really isn't:
 
 ```swift
-private func authenticationAction(isFormValid: MutableProperty<Bool>) -> Action<Void, Void, NoError> {
+let authenticateAction = Action<Void, Void, NoError>(enabledIf: isFormValid) { _ in
+    return SignalProducer { o, d in
 
-  return Action<Void, Void, NoError>(enabledIf: isFormValid, { [weak self] _ in
-      return SignalProducer { o, d in
+        let username = usernameProperty.value 
+        let password = passwordProperty.value 
 
-        let username = self?.username.value ?? ""
-        let password = self?.password.value ?? ""
-
-        NSUserDefaults.setValue(username, forKey: .Username)
-        NSUserDefaults.setValue(password, forKey: .Password)
+        UserDefaults.setValue(value: username, forKey: .Username)
+        UserDefaults.setValue(value: password, forKey: .Password)
 
         o.sendCompleted()
     }
-  })
 }
 ```
 
