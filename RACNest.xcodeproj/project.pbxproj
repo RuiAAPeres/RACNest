@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BC29BC91F62B970007D2AA7 /* PincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC29BC81F62B970007D2AA7 /* PincodeViewController.swift */; };
+		5BC29BCC1F62B992007D2AA7 /* PincodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC29BCB1F62B992007D2AA7 /* PincodeViewModel.swift */; };
 		B25D051B1EA2CCBD0039D323 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25D051A1EA2CCBD0039D323 /* ReactiveSwift.framework */; };
 		C72D32E21C470F5300F88B11 /* RACNestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D32E11C470F5300F88B11 /* RACNestTests.swift */; };
 		C72D32F81C470FE000F88B11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D32ED1C470FE000F88B11 /* AppDelegate.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5BC29BC81F62B970007D2AA7 /* PincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeViewController.swift; sourceTree = "<group>"; };
+		5BC29BCB1F62B992007D2AA7 /* PincodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeViewModel.swift; sourceTree = "<group>"; };
 		B25D051A1EA2CCBD0039D323 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		C72D32C91C470F5200F88B11 /* RACNest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RACNest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72D32DD1C470F5300F88B11 /* RACNestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RACNestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +98,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BC29BC71F62B92D007D2AA7 /* Pincode */ = {
+			isa = PBXGroup;
+			children = (
+				5BC29BC81F62B970007D2AA7 /* PincodeViewController.swift */,
+				5BC29BCA1F62B975007D2AA7 /* Components */,
+			);
+			path = Pincode;
+			sourceTree = "<group>";
+		};
+		5BC29BCA1F62B975007D2AA7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5BC29BCB1F62B992007D2AA7 /* PincodeViewModel.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		C72D32C01C470F5200F88B11 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +185,7 @@
 		C72D32F61C470FE000F88B11 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5BC29BC71F62B92D007D2AA7 /* Pincode */,
 				C7852C3B1C4ACF9500375089 /* Form */,
 				C76C20591C504B750083F4F5 /* Search */,
 				C7852C3E1C4ACFE000375089 /* Main */,
@@ -410,9 +432,11 @@
 				C7CB87121C51AB8E00ED9AE6 /* GenericTableCell.swift in Sources */,
 				C7852C461C4ACFE000375089 /* MainCellItem.swift in Sources */,
 				C7F740591C4B2A2F00519895 /* UserDefaults.swift in Sources */,
+				5BC29BC91F62B970007D2AA7 /* PincodeViewController.swift in Sources */,
 				C7852C331C4ACAAA00375089 /* StoryboardViewController.swift in Sources */,
 				C72D330F1C471B3000F88B11 /* TableViewProtocols.swift in Sources */,
 				C76C205B1C504B9D0083F4F5 /* SearchViewController.swift in Sources */,
+				5BC29BCC1F62B992007D2AA7 /* PincodeViewModel.swift in Sources */,
 				C72D330D1C471B0C00F88B11 /* CellProtocols.swift in Sources */,
 				C7852C4C1C4B0E2B00375089 /* FormViewModel.swift in Sources */,
 				C7852C351C4ACB6B00375089 /* Storyboard.swift in Sources */,

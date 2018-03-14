@@ -10,9 +10,10 @@ Learning FRP takes time, learning how to apply the FRP paradigm to your app take
 Examples
 --------
 
-1. [Form 🐥](Documents/1_form.md) 
+1. [Form 🐥](Documents/1_form.md)
 2. [Composition 🚗🚕🚙](Documents/2_composition.md)
-2. [Search 🔍](Documents/3_search.md)
+3. [Search 🔍](Documents/3_search.md)
+4. [Pincode 🔐](Documents/4_pincode.md)
 
 Contributing
 -----------
