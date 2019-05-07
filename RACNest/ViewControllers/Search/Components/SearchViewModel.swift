@@ -27,7 +27,7 @@ struct SearchViewModel {
         }
     }
     
-    static private func generateDataSource() -> SignalProducer<[String], NoError> {
+    static private func generateDataSource() -> SignalProducer<[String], Never> {
         
         return SignalProducer {o, d in
             
