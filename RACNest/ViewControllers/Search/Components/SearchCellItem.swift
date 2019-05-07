@@ -8,10 +8,10 @@ struct SearchCellItem {
 extension SearchCellItem: TextPresentable {
     var text: NSAttributedString {
         
-        let attributedString = NSMutableAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.gray])
+        let attributedString = NSMutableAttributedString(string: title, attributes: [.foregroundColor: UIColor.gray])
         
         let range = (title as NSString).range(of: textBeingSearched)
-        attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blue, range: range)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.blue, range: range)
         
         return attributedString
     }

@@ -1,10 +1,9 @@
 import ReactiveCocoa
 import ReactiveSwift
-import Result
 
 struct FormViewModel {
 
-    let authenticateAction: Action<Void, Void, NoError>
+    let authenticateAction: Action<Void, Void, Never>
 
     let username: MutableProperty<String>
     let password: MutableProperty<String>
@@ -20,7 +19,7 @@ struct FormViewModel {
         let isFormValid = MutableProperty(credentialsValidationRule(username, password))
         isFormValid <~ SignalProducer.combineLatest(usernameProperty.producer, passwordProperty.producer).map(credentialsValidationRule)
 
-        let authenticateAction = Action<Void, Void, NoError>(enabledIf: isFormValid) { _ in
+        let authenticateAction = Action<Void, Void, Never>(enabledIf: isFormValid) { _ in
             return SignalProducer { o, d in
 
                 let username = usernameProperty.value 
@@ -42,8 +41,8 @@ struct FormViewModel {
 
 private func validateCredentials(username: String, password: String) -> Bool {
     
-    let usernameRule = username.characters.count > 5
-    let passwordRule = password.characters.count > 10
+    let usernameRule = username.count > 5
+    let passwordRule = password.count > 10
     
     return usernameRule && passwordRule
 }

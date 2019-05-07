@@ -1,6 +1,5 @@
 import ReactiveCocoa
 import ReactiveSwift
-import Result
 
 struct SearchViewModel {
     
@@ -28,14 +27,14 @@ struct SearchViewModel {
         }
     }
     
-    static private func generateDataSource() -> SignalProducer<[String], NoError> {
+    static private func generateDataSource() -> SignalProducer<[String], Never> {
         
         return SignalProducer {o, d in
             
             let path: String = Bundle.main.path(forResource: "words", ofType: "txt")!
             let string: String = try! String(contentsOfFile: path, encoding: String.Encoding.utf8)
 
-            o.send(value: string.characters.split(separator: "\n").map(String.init))
+            o.send(value: string.split(separator: "\n").map(String.init))
             o.sendCompleted()
         }
     }

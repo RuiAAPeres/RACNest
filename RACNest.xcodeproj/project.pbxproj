@@ -28,7 +28,6 @@
 		C7CB87161C51AC7000ED9AE6 /* SearchCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CB87141C51AC7000ED9AE6 /* SearchCellItem.swift */; };
 		C7CB87171C51AC7000ED9AE6 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CB87151C51AC7000ED9AE6 /* SearchViewModel.swift */; };
 		C7F740501C4B219D00519895 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F7404D1C4B219D00519895 /* ReactiveCocoa.framework */; };
-		C7F740511C4B219D00519895 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F7404E1C4B219D00519895 /* Result.framework */; };
 		C7F740591C4B2A2F00519895 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F740581C4B2A2F00519895 /* UserDefaults.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +79,6 @@
 			files = (
 				B25D051B1EA2CCBD0039D323 /* ReactiveSwift.framework in Frameworks */,
 				C7F740501C4B219D00519895 /* ReactiveCocoa.framework in Frameworks */,
-				C7F740511C4B219D00519895 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +329,7 @@
 				TargetAttributes = {
 					C72D32C81C470F5200F88B11 = {
 						CreatedOnToolsVersion = 7.2;
+						ProvisioningStyle = Manual;
 					};
 					C72D32DC1C470F5300F88B11 = {
 						CreatedOnToolsVersion = 7.2;
@@ -343,6 +342,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -387,7 +387,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 			);
 			name = "Carthage Run Script";
 			outputPaths = (
@@ -560,7 +559,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rp.RACNest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -577,7 +576,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rp.RACNest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
