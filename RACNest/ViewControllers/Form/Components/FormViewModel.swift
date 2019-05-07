@@ -1,6 +1,5 @@
 import ReactiveCocoa
 import ReactiveSwift
-import Result
 
 struct FormViewModel {
 
@@ -42,8 +41,8 @@ struct FormViewModel {
 
 private func validateCredentials(username: String, password: String) -> Bool {
     
-    let usernameRule = username.characters.count > 5
-    let passwordRule = password.characters.count > 10
+    let usernameRule = username.count > 5
+    let passwordRule = password.count > 10
     
     return usernameRule && passwordRule
 }
